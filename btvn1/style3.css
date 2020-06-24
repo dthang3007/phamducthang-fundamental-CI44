@@ -1,0 +1,23 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+.container {
+    display: flex;
+}
+.content-main{
+    flex: 1;
+}
+.ads {
+    background-color: lightskyblue; 
+    height: 700px;
+    width: 200px;
+
+}
+
+.menu {
+    height: 800px;
+    width: 200px !important;
+
+}

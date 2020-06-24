@@ -1,0 +1,6 @@
+.item {
+    display: inline-block;
+    width: 24%;
+    vertical-align: top;
+    background-color: #bdbdbd;
+}
