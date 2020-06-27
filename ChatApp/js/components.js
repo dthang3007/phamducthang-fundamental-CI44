@@ -1,8 +1,8 @@
 const components = {}
-components.welcomeScreen=`
+components.welcomeScreen = `
 <div> Welcome to chat screen </div>
 `
-components.registerScreen=`
+components.registerScreen = `
 <div class="container">
         <div class="register-container">
             <div class="register-form">
@@ -43,7 +43,7 @@ components.registerScreen=`
         </div>
     </div>`
 
-components.loginScreen=`    <div class="container-login">
+components.loginScreen = `    <div class="container-login">
 <div class="login-container">
     <div class="login-form">
         <div class="title">
@@ -66,3 +66,6 @@ components.loginScreen=`    <div class="container-login">
     </div>
 </div>
 </div>`
+components.chatScreen = `
+<div id="welcomeUser"> </div>
+`
