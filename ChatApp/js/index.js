@@ -12,7 +12,7 @@ window.onload = () => {
     firebase.initializeApp(firebaseConfig);
     console.log('loaded')
     firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
+        if (user&&user.emailVerified) {
             console.log(user)
             model.currentUser = {
                 displayName: user.displayName,
@@ -20,6 +20,7 @@ window.onload = () => {
             };
             view.setActiveScreen('chatScreen')
         } else {
+            alert("Chua xac nhan email")
             view.setActiveScreen('loginScreen')
 
         }
