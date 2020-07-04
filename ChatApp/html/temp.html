@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -6,30 +7,41 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/register.css">
     <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/chat.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
+
 <body>
-    <div class="container-login">
-        <div class="login-container">
-            <div class="login-form">
-                <div class="title">
-                    MindX Chat
+    <div class="chat-container">
+        <div class="chat-header">
+            MindX chat
+        </div>
+        <div class="main">
+            <div class="conversation-detail">
+                <div class="conversation-title">First conversattion</div>
+                <div class="list-message">
+                    <div class="message their">
+                        <div class="owner">Bot</div>
+                        <div class="content">LoremIpsumissimplydummytextoftheLoremIpsumissimplydummytextofthe printing and typesetting industry.
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                            unknown printer took a galley of type and scrambled it to make a type specimen book. It has
+                            survived not only five centuries, but also the leap into electronic typesetting, remaining
+                            essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+                            containing Lorem Ipsum passages, and more recently with desktop publishing software like
+                            Aldus PageMaker including versions of Lorem Ipsum.</div>
+                    </div>
+                    <div class="message mine">
+                        <div class="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+                    </div>
                 </div>
-                <form id="form-login">
-                    <div class="input-wrapper">
-                        <input type="text" name="email" placeholder="Email">
-                        <div class="error" id="error-email"></div>
-                    </div>
-                    <div class="input-wrapper">
-                        <input type="password" naem="password" placeholder="Password">
-                        <div class="error" id="error-password"></div>   
-                    </div>    
-                    <div class="submit-wrapper">
-                        <div>Don't have an account ? <span class="cursor-pointer" id='redirect-to-login'>Register </span></div>
-                        <button class="btn" type="submit">Login</button>
-                    </div>
+                <form id="sendMessageForm">
+                    
+                    <input type="text" autocomplete="off" class="input" name="message" placeholder="Type a message">
+                    <button class="btn"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                 </form>
             </div>
         </div>
     </div>
 </body>
+
 </html>
