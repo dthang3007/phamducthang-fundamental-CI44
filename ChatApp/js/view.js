@@ -3,7 +3,6 @@ view.setActiveScreen = (screenName) => {
     document.getElementById('app').innerHTML = components.welcomeScreen
     switch (screenName) {
         case 'registerScreen':
-
             document.getElementById('app').innerHTML = components.registerScreen
             let redirectToLogin = document.getElementById('redirect-to-login')
             redirectToLogin.addEventListener('click', (e) => {
@@ -22,10 +21,7 @@ view.setActiveScreen = (screenName) => {
                 if (controller.register(registerInfor)) {
                     model.register(registerInfor.firstName, registerInfor.lastName, registerInfor.email, registerInfor.password)
                 }
-
-
             })
-
             break;
         case 'loginScreen':
             document.getElementById('app').innerHTML = components.loginScreen;
@@ -40,11 +36,9 @@ view.setActiveScreen = (screenName) => {
                     email: formLogin.email.value,
                     password: formLogin.password.value,
                 }
-
                 if (controller.login(formLoginInfor)) {
                     model.login(formLoginInfor.email, formLoginInfor.password)
                 }
-
             })
             break
         case 'chatScreen':
@@ -58,13 +52,12 @@ view.setActiveScreen = (screenName) => {
                     createdAt: new Date().toISOString()
                 }
                 if (sendMessageForm.message.value.trim() != '') {
-                    view.addMessage(message)
+                    model.addMessage(message)
                 }
-                sendMessageForm.message.value = ""
-                model.updateMessages(message)
-
+                sendMessageForm.message.value = " "
             })
             model.loadConversations()
+            model.listenConversationsChange()
             break
     }
 }

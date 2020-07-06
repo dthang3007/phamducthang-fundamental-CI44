@@ -43,11 +43,29 @@ model.loadConversations = async () => {
         model.currentConversation = data[0]
         view.showCurrentConversation()
     }
- 
 }
-model.updateMessages =async(message)=>{
+model.addMessage = async (message) => {
     await firebase.firestore().collection(model.collectionName).doc(model.currentConversation.id).update({
         messages: firebase.firestore.FieldValue.arrayUnion(message)
     })
-    
+
+}
+model.listenConversationsChange = () => {
+    let isFistRun = false
+    firebase.firestore().collection(model.collectionName).where('users', 'array-contains', model.currentUser.email).onSnapshot((res) => {
+        if(!isFistRun) {
+            isFistRun = true
+            return
+        }
+        const docChanges = res.docChanges()  
+        console.log(docChanges)   
+        for (let oneChange of docChanges) {
+            const type = oneChange.type
+            const oneChangeData = utils.getDataFormDoc(oneChange.doc)
+            console.log(oneChangeData)
+            if(oneChangeData.id===model.currentConversation.id){
+                view.addMessage(oneChangeData.messages[oneChangeData.messages.length-1])
+            }
+        }
+    })
 }
