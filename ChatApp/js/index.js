@@ -14,7 +14,7 @@ window.onload = () => {
     // templateQueryDatabase()
     firebase.auth().onAuthStateChanged(function (user) {
         if (user && user.emailVerified) {
-            console.log(user)
+            
             model.currentUser = {
                 displayName: user.displayName,
                 email: user.email,

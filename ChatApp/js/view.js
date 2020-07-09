@@ -56,8 +56,17 @@ view.setActiveScreen = (screenName) => {
                 }
                 sendMessageForm.message.value = " "
             })
+            
             model.loadConversations()
             model.listenConversationsChange()
+            
+            // let temp=document.querySelectorAll(".conversation")
+            // console.log(temp)
+            // temp.forEach(item=>{
+            //     item.addEventListener('click',()=>{
+            //         console.log("1")
+            //     })
+            // })
             break
     }
 }
@@ -84,6 +93,44 @@ view.showCurrentConversation = () => {
         view.addMessage(oneMessage)
     }
 }
+view.addConversation=(conversation)=>{
+    const conversationWrapper=document.createElement('div')
+    conversationWrapper.classList.add('conversation')
+    if(conversation.id===model.currentConversation.id){
+        conversationWrapper.classList.add('current')
+        conversationWrapper.setAttribute("id",conversation.id)
+        conversationWrapper.setAttribute('onclick',"view.click(this.id)")
+    }
+    conversationWrapper.innerHTML=`                
+    <div class="conversation-title">${conversation.title}</div>
+    <div class="conversation-num-user">${conversation.users.length}</div>`
+    conversationWrapper.setAttribute("id",conversation.id)
+    conversationWrapper.setAttribute('onclick',"view.click(this.id)")
+    document.querySelector('.list-conversations').appendChild(conversationWrapper)
+}
+view.showConversation=()=>{
+    for(oneConversation of model.conversations){
+        view.addConversation(oneConversation)
+    }
+}
+view.click=(id)=>{
+    // model.currentConversation.id=id;
+    // view.showCurrentConversation()
+    // console.log(model.currentConversation)
+    console.log(id)
+    for(let i=0;i<model.conversations.length;i++){
+        if(id==model.conversations[i].id){
+            document.querySelector(".list-message").innerText=" "
+            document.querySelector('.current').classList.remove("current")
+            model.currentConversation=model.conversations[i]
+            document.getElementById(id).classList.add("current")
+            view.showCurrentConversation()
+        }
+    }
+}
+
+
+
 
 
 

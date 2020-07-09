@@ -1,8 +1,9 @@
 .chat-container{
     font-family: sans-serif;
-    height: 100vh;
+    height: calc(100vh - 64px);
+    display: flex;
 }
-.chat-container .chat-header {
+ .chat-header {
     background: #0370fe;
     color: #ffffff;
     text-align: center;
@@ -11,7 +12,8 @@
     line-height: 64px;
 }
 .chat-container .main{
-    height: calc(100vh - 64px); 
+    height: 100%; 
+    flex-grow: 1;
 }
 .conversation-detail .conversation-title{
 
@@ -75,4 +77,14 @@
 }
 .chat-container .message{
     padding-bottom: 3px;
+}
+.chat-container .conversation{
+    padding:10px
+}
+.chat-container .conversation.current{
+    background: #dbdbdb;
+}
+.chat-container .aside-right{
+    border: 1px solid #dbdbdb;
+    font-size: 14px;
 }
