@@ -8,47 +8,49 @@
     <link rel="stylesheet" href="../css/register.css">
     <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../css/chat.css">
+    <link rel="stylesheet" href="../css/conversation.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
 <body>
-    <div class="chat-container">
+    <div id="welcomeUser">
         <div class="chat-header">
             MindX chat
         </div>
-        <div class="main">
-            <div class="conversation-detail">
-                <div class="conversation-title">First conversattion</div>
-                <div class="list-message">
-                    <div class="message their">
-                        <div class="owner">Bot</div>
-                        <div class="content">LoremIpsumissimplydummytextoftheLoremIpsumissimplydummytextofthe printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                            unknown printer took a galley of type and scrambled it to make a type specimen book. It has
-                            survived not only five centuries, but also the leap into electronic typesetting, remaining
-                            essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-                            containing Lorem Ipsum passages, and more recently with desktop publishing software like
-                            Aldus PageMaker including versions of Lorem Ipsum.</div>
-                    </div>
-                    <div class="message mine">
-                        <div class="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
-                    </div>
+        <div class="chat-container">
+            <div class="aside-left">
+                <div class="new-conversation">
+                    <button class="btn" id="new-conversation">+New conversation</button>
                 </div>
-                <form id="sendMessageForm">
-                    
-                    <input type="text" autocomplete="off" class="input" name="message" placeholder="Type a message">
-                    <button class="btn"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                </form>
+                <div class="list-conversations">
+        
+                </div>
             </div>
-        </div>
-    </div>
-<div class="aside-right">
-    <div class="list-conversations">
-        <div class="conversation">
-            <div class="conversation-title">First Conversation</div>
-        </div>
-    </div>
+            <div class="main">
+                <div class="conversation-detail">
+                    <div class="conversation-title">First conversattion</div>
+                    <div class="list-message">
+                    </div>
+                    <form id="sendMessageForm">
+                        <input type="text" autocomplete="off" class="input" name="message" placeholder="Type a message">
+                        <button class="btn"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="aside-right">
+                <div class="show-information">
+                    <div class="list-information">
+                        <p>pdt3072000@gmail.com</p>
+                        <p>pdt3072000@gmail.com</p>
+                    </div>
+                    <form>
+                    <input type="text" autocomplete="off" class="input" name="" placeholder="Email">
+                    <button class="btn">Add</button>
+                    </form>
+                </div>
+</div></div>
 </div>
+
 </body>
 
 </html>

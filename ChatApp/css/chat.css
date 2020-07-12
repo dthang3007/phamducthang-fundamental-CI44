@@ -84,7 +84,39 @@
 .chat-container .conversation.current{
     background: #dbdbdb;
 }
-.chat-container .aside-right{
+.chat-container .aside-left{
     border: 1px solid #dbdbdb;
     font-size: 14px;
+    width: 15%;
+}
+.chat-container .aside-left .new-conversation{
+    height: 64px;
+    border-bottom: 1px solid #dbdbdb;
+    line-height: 64px !important;
+    text-align: center;
+}
+.chat-container .aside-right{
+    border-left: 1px solid #bdbdbd;
+    width: 15%;
+}
+.chat-container .aside-right .list-information p{
+    padding-left: 5px;
+    font-size: 14px;
+}
+.chat-container .aside-right #add-users{
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-left: 5px;
+    width: 90%;
+}
+.chat-container .aside-right input{
+    height: 30px;
+    border: 1px solid #bdbdbd;
+    border-radius: 5px;
+    margin-bottom: 10;
+    text-indent: 10px;
+}
+.chat-container .aside-right .btn{
+    width: 40%;
 }

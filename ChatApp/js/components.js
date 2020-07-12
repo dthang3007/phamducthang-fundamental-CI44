@@ -67,27 +67,61 @@ components.loginScreen = `    <div class="container-login">
 </div>
 </div>`
 components.chatScreen = `
-<div id="welcomeUser">
+    <div id="welcomeUser">
 <div class="chat-header">
     MindX chat
 </div>
 <div class="chat-container">
-    <div class="aside-right">
+    <div class="aside-left">
+        <div class="new-conversation">
+            <button class="btn" id="new-conversation">+New conversation</button>
+        </div>
         <div class="list-conversations">
 
         </div>
     </div>
-<div class="main">
-    <div class="conversation-detail">
-        <div class="conversation-title">First conversattion</div>
-        <div class="list-message">
+    <div class="main">
+        <div class="conversation-detail">
+            <div class="conversation-title">First conversattion</div>
+            <div class="list-message">
+            </div>
+            <form id="sendMessageForm">
+                <input type="text" autocomplete="off" class="input" name="message" placeholder="Type a message">
+                <button class="btn"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+            </form>
         </div>
-        <form id="sendMessageForm">
-            <input type="text" autocomplete="off" class="input" name="message" placeholder="Type a message">
-            <button class="btn"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+    </div>
+    <div class="aside-right">
+        <div class="show-information">
+            <div class="list-information">
+            </div>
+            <form id="add-users">
+            <input type="text" autocomplete="off" class="input" name="" placeholder="Email">
+            <button class="btn">Add</button>
+            </form>
+        </div>
+</div></div>
+</div>
+`
+components.createConversation = `
+<div class="create-conversation-container">
+    <div class="title-header">Techkids Chat</div>
+    <div class="create-form">
+        <h3>Create conversation</h3>
+        <form id="create-conversation-form">
+            <div class="input-wrapper">
+                <input type="text" name="title" placeholder="Conversation name">
+                <div class="error" id="conversation-name-error"></div>
+            </div>
+            <div class="input-wrapper">
+                <input type="text" name="email" placeholder="Friend email">
+                <div class="error" id="conversation-email-error"></div>
+            </div>
+            <div class="create-wrapper">
+                <button class="btn" type="submit">Create</button>
+                <button type="button" class="btn" style="background: #bdbdbb;"id="back-to-chat">Cancel</button>
+            </div>
         </form>
     </div>
-</div>
-</div>
- </div>
-`
+
+</div>`

@@ -52,7 +52,20 @@ controller.allPassed = (vailidateResults) => {
         if (!result) {
             return false
         }
-
     }
     return true
+}
+controller.createConversation=({title,friendEmail})=>{
+    view.setErrorMessage('conversation-name-error',title === '' ? 'please input title' :'')
+    view.setErrorMessage('conversation-email-error',friendEmail === '' ? 'Please input friend':'')
+    if(title!=='' && friendEmail !==''){
+        let temp={
+            title:title,
+            users:[friendEmail,model.currentUser.email],
+            createdAt: new Date().toISOString(),
+            messages:[]
+        }
+        model.createConversation(temp)
+    }
+    
 }

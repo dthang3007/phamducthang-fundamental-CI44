@@ -29,7 +29,6 @@ model.login = async (email, password) => {
                 email: user.user.email
             }
             console.log(model.currentUser.displayName)
-            view.setActiveScreen("chatScreen")
         } else {
             alert("Chua xac nhan email")
         }
@@ -77,7 +76,25 @@ model.listenConversationsChange = () => {
                     }
                 }
                 console.log(model.conversations)
+            }else if(type==="added"){
+                model.conversations.push(oneChangeData)
+                view.addConversation(oneChangeData)
             }
         }
     })
 }
+model.changeCurrentConversation=(conversationId)=>{
+    
+for(conversation of model.conversations){
+    
+    if(conversation.id==conversationId){
+        model.currentConversation=conversation
+    }
+    view.showCurrentConversation()
+    view.showUsers()
+}}
+model.createConversation=async (conversation)=>{
+    await firebase.firestore().collection(model.collectionName).add(conversation)
+    view.backToChatScreen()
+}
+
