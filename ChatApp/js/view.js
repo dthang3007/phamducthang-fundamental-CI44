@@ -106,6 +106,7 @@ view.backToChatScreen = () => {
     document.getElementById('new-conversation').addEventListener('click', () => {
       view.setActiveScreen('createConversationScreen')
     })
+    view.showUsers()
     view.showConversation()
     view.showCurrentConversation()
   }
@@ -159,16 +160,19 @@ view.setErrorMessage = (elementId, message) => {
     document.getElementById(elementId).innerText = message
   }
 view.addUsers=(user)=>{
-    const userWrapper=document.createElement('div')
-    userWrapper.innerHTML=`${user}`
-    console.log(user)
+    const userWrapper=document.createElement('p')
+    userWrapper.innerText=`${user}`
     document.querySelector('.list-information').appendChild(userWrapper)
 }
 view.showUsers = ()=>{
-    document.querySelector(".show-information").innerText=" "
+    document.querySelector(".list-information").innerText=" "
     for(let oneUser of model.currentConversation.users){
         view.addUsers(oneUser)
     }
+}
+view.showTitle=(title)=>{
+    document.getElementById("head-title").innerText=""
+    document.getElementById("head-title").innerText=`${title}`
 }
 
 

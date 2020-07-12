@@ -82,7 +82,7 @@ components.chatScreen = `
     </div>
     <div class="main">
         <div class="conversation-detail">
-            <div class="conversation-title">First conversattion</div>
+            <div class="conversation-title" id="head-title">    </div>
             <div class="list-message">
             </div>
             <form id="sendMessageForm">

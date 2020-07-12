@@ -42,7 +42,9 @@ model.loadConversations = async () => {
     model.conversations = data
     if (data.length > 0) {
         model.currentConversation = data[0]
+        view.showUsers()
         view.showCurrentConversation()
+        view.showTitle(model.currentConversation.title)
         console.log(model.conversations)
     }
     view.showConversation()
@@ -89,9 +91,11 @@ for(conversation of model.conversations){
     
     if(conversation.id==conversationId){
         model.currentConversation=conversation
+        view.showCurrentConversation()
+        view.showUsers()
+        view.showTitle(conversation.title)
     }
-    view.showCurrentConversation()
-    view.showUsers()
+
 }}
 model.createConversation=async (conversation)=>{
     await firebase.firestore().collection(model.collectionName).add(conversation)
