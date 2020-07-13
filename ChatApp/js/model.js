@@ -37,7 +37,7 @@ model.login = async (email, password) => {
     }
 }
 model.loadConversations = async () => {
-    let conversations = await firebase.firestore().collection(model.collectionName).get()
+    let conversations = await firebase.firestore().collection(model.collectionName).where('users', 'array-contains', model.currentUser.email).get()
     let data = utils.getDataFormDocs(conversations.docs)
     model.conversations = data
     if (data.length > 0) {
@@ -61,6 +61,7 @@ model.listenConversationsChange = () => {
             isFistRun = true
             return
         }
+        console.log(res)
         const docChanges = res.docChanges()
         console.log(docChanges)
         for (let oneChange of docChanges) {
@@ -68,9 +69,14 @@ model.listenConversationsChange = () => {
             const oneChangeData = utils.getDataFormDoc(oneChange.doc)
             console.log(oneChangeData)
             if (type === 'modified') {
-                if (oneChangeData.id === model.currentConversation.id) {
-                    view.addMessage(oneChangeData.messages[oneChangeData.messages.length - 1])
+                if (oneChangeData.users.length === model.currentConversation.users.length){
+                    if (oneChangeData.id === model.currentConversation.id) {
+                        view.addMessage(oneChangeData.messages[oneChangeData.messages.length - 1])
+                    }
+                }else{
+                    view.addUsers(oneChangeData.users[oneChangeData.users.length-1])
                 }
+
                 for (let i = 0; i < model.conversations.length; i++) {
                     const element = model.conversations[i]
                     if (element.id === oneChangeData.id) {
@@ -78,27 +84,33 @@ model.listenConversationsChange = () => {
                     }
                 }
                 console.log(model.conversations)
-            }else if(type==="added"){
+            } else if (type === "added") {
                 model.conversations.push(oneChangeData)
                 view.addConversation(oneChangeData)
             }
         }
     })
 }
-model.changeCurrentConversation=(conversationId)=>{
-    
-for(conversation of model.conversations){
-    
-    if(conversation.id==conversationId){
-        model.currentConversation=conversation
-        view.showCurrentConversation()
-        view.showUsers()
-        view.showTitle(conversation.title)
-    }
+model.changeCurrentConversation = (conversationId) => {
 
-}}
-model.createConversation=async (conversation)=>{
+    for (conversation of model.conversations) {
+
+        if (conversation.id == conversationId) {
+            model.currentConversation = conversation
+            view.showCurrentConversation()
+            view.showUsers()
+            view.showTitle(conversation.title)
+        }
+
+    }
+}
+model.createConversation = async (conversation) => {
     await firebase.firestore().collection(model.collectionName).add(conversation)
     view.backToChatScreen()
 }
-
+model.addUser = (email) => {
+    const dataToUpdate = {
+        users: firebase.firestore.FieldValue.arrayUnion(email)
+    }
+    firebase.firestore().collection(model.collectionName).doc(model.currentConversation.id).update(dataToUpdate)
+}
