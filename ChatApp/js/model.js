@@ -81,10 +81,13 @@ model.listenConversationsChange = () => {
                     const element = model.conversations[i]
                     if (element.id === oneChangeData.id) {
                         model.conversations[i] = oneChangeData
+                        if(oneChangeData.messages[oneChangeData.messages.length-1].owner!==model.currentUser.email)
+                        view.showNotify(oneChangeData.id)
                     }
                 }
                 console.log(model.conversations)
             } else if (type === "added") {
+                
                 model.conversations.push(oneChangeData)
                 view.addConversation(oneChangeData)
             }

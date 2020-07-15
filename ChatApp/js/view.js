@@ -59,11 +59,14 @@ view.setActiveScreen = (screenName) => {
             document.getElementById("new-conversation").addEventListener('click', () => {
                 view.setActiveScreen("createConversationScreen")
             })
-            let addUsers=document.querySelector("#add-users")
-            addUsers.addEventListener("submit",(e)=>{
+            let addUsers = document.querySelector("#add-users")
+            addUsers.addEventListener("submit", (e) => {
                 e.preventDefault()
                 controller.addUser(addUsers.email.value)
-                addUsers.email.value=" "
+                addUsers.email.value = " "
+            })
+            document.getElementById("main-messages").addEventListener('click', () => {
+                document.getElementById(model.currentConversation.id).lastElementChild.style  = "display:none"
             })
             model.loadConversations()
             model.listenConversationsChange()
@@ -112,9 +115,19 @@ view.backToChatScreen = () => {
     document.getElementById('new-conversation').addEventListener('click', () => {
         view.setActiveScreen('createConversationScreen')
     })
+    let addUsers = document.querySelector("#add-users")
+    addUsers.addEventListener("submit", (e) => {
+        e.preventDefault()
+        controller.addUser(addUsers.email.value)
+        addUsers.email.value = " "
+    })
+    document.getElementById("main-messages").addEventListener('click', () => {
+        document.getElementById(model.currentConversation.id).lastElementChild.style  = "display:none"
+    })
     view.showUsers()
     view.showConversation()
     view.showCurrentConversation()
+
 }
 view.addMessage = (message) => {
     const messageWrapper = document.createElement('div')
@@ -143,16 +156,19 @@ view.showCurrentConversation = () => {
 view.addConversation = (conversation) => {
     const conversationWrapper = document.createElement('div')
     conversationWrapper.classList.add('conversation')
+    conversationWrapper.id = conversation.id
     if (conversation.id === model.currentConversation.id) {
         conversationWrapper.classList.add('current')
     }
     conversationWrapper.innerHTML = `                
     <div class="conversation-title">${conversation.title}</div>
-    <div class="conversation-num-user">${conversation.users.length}</div>`
+    <div class="conversation-num-user">${conversation.users.length}</div>
+    <div class="conversation-notify"></div>`
     conversationWrapper.addEventListener('click', () => {
         document.querySelector('.current').classList.remove("current")
         conversationWrapper.classList.add('current')
         model.changeCurrentConversation(conversation.id)
+        conversationWrapper.lastElementChild.style = "display:none"
     }
     )
     document.querySelector('.list-conversations').appendChild(conversationWrapper)
@@ -179,6 +195,10 @@ view.showUsers = () => {
 view.showTitle = (title) => {
     document.getElementById("head-title").innerText = ""
     document.getElementById("head-title").innerText = `${title}`
+}
+view.showNotify = (conversationId) => {
+    const conversation = document.getElementById(conversationId)
+    conversation.lastElementChild.style = "display:block"
 }
 
 
